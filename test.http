@@ -1,4 +1,6 @@
-POST https://{{host}}/api/qna HTTP/1.1
+@host = https://xyz-api-func.azurewebsites.net
+
+POST {{host}}/api/qna HTTP/1.1
 content-type: application/json
 
 {
