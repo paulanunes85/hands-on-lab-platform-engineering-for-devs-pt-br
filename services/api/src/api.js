@@ -20,14 +20,14 @@ app.http('qna', {
 
         // Release 2 introduces some errors
         if (RELEASE === 2) {
-            // Generate some random errors for testing
+            // Generate some random errors for testing with a probability of 10%
             if (Math.random() < 0.1) {
                 throw new Error('Random error');
             }
         }
 
         // Release 3 introduces some latency
-        if (RELEASE === 4) {
+        if (RELEASE === 3) {
             await setTimeout(2000); // wait 2 seconds
         }
 
