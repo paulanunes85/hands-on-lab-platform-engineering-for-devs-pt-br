@@ -32,6 +32,12 @@ module apiFunctionApp './functionapp.bicep' = {
     storageAccountName: storageAccount.outputs.storageAccountName
     appInsightsInstrumentationKey: applicationInsights.outputs.instrumentationKey
     tags: tags
+    environmentVariables: [
+      {
+        name: 'RELEASE'
+        value: '1'
+      }
+    ]
   }
 }
 
@@ -39,6 +45,15 @@ module applicationInsights './appinsights.bicep' = {
   name: 'appinsights'
   params: {
     name: '${prefix}-insights'
+    location: location
+    tags: tags
+  }
+}
+
+module loadTesting './loadtesting.bicep' = {
+  name: 'loadtesting'
+  params: {
+    name: '${prefix}-load'
     location: location
     tags: tags
   }
