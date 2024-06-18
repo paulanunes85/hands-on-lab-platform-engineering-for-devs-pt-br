@@ -76,3 +76,13 @@ module cosmosContributorAssignment './core/database/cosmos/sql/cosmos-sql-role-a
     principalId: apiFunctionApp.outputs.principalId
   }
 }
+
+module loadTesting './loadtesting.bicep' = {
+  name: 'loadtesting'
+  params: {
+    name: '${prefix}-load'
+    location: location
+    tags: tags
+  }
+}
+
