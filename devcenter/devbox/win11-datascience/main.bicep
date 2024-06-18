@@ -153,6 +153,7 @@ resource imageTemplate 'Microsoft.VirtualMachineImages/imageTemplates@2022-02-14
           'choco install -y azure-cli'
           'choco install -y vscode'
           'choco install -y python'
+          'choco install -y nodejs-lts'
           '$vscode_extension_dir="C:/temp/extensions"; New-Item $vscode_extension_dir -ItemType Directory -Force; [Environment]::SetEnvironmentVariable("VSCODE_EXTENSIONS", $vscode_extension_dir, "Machine"); $env:VSCODE_EXTENSIONS=$vscode_extension_dir; Start-Process -FilePath "C:/Program Files/Microsoft VS Code/bin/code.cmd"  -ArgumentList " --install-extension github.copilot"  -Wait -NoNewWindow; Start-Process -FilePath "C:/Program Files/Microsoft VS Code/bin/code.cmd"  -ArgumentList " --install-extension ms-vscode.vscode-node-azure-pack"  -Wait -NoNewWindow; Start-Process -FilePath "C:/Program Files/Microsoft VS Code/bin/code.cmd"  -ArgumentList " --install-extension ms-azuretools.azure-dev"  -Wait -NoNewWindow; Start-Process -FilePath "C:/Program Files/Microsoft VS Code/bin/code.cmd"  -ArgumentList " --install-extension ms-python.python"  -Wait -NoNewWindow; Start-Process -FilePath "C:/Program Files/Microsoft VS Code/bin/code.cmd"  -ArgumentList " --install-extension ms-toolsai.jupyter"  -Wait -NoNewWindow'
         ]
       }
