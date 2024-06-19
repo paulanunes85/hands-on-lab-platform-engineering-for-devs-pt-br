@@ -42,9 +42,9 @@ During this workshop you will have the instructions to complete each steps. It i
 The goal of the workshop is to edit the code of a simple Order management API, deploy it to Azure, and detect potential issues using load tests and monitoring.
 
 We will be using the following services:
-- [Microsoft Dev Box (DevBox)][devbox]
-- [Azure Deployment environment (ADE)][ade]
-- [Azure Developer CLI (AZD)][azd]
+- [Microsoft Dev Box][devbox]
+- [Azure Deployment Environment][ade]
+- [Azure Developer CLI][azd]
 - [Azure Load Testing][loadtesting]
 - [Application Insights][appinsights]
 
@@ -298,9 +298,11 @@ As the test starts, you will see a `Load test results` dashboard with various me
 
 <div class="task" data-title="Task">
 
-> - What is the average response time ?
+> - Find out the average response time ?
 
 </div>
+
+<details>
 
 <summary>📚 Toggle solution</summary>
 
@@ -329,31 +331,72 @@ TODO: add the solution
 
 # Lab 4 : Investigate errors
 
+As you add new features to your application, few regressions may appear, hence the need for testing and monitoring to detect and fix these regressions.
+
+To simulate making changes and deploying new releases, the provided Function App relies on the `RELEASE` environment variable to control its behaviour and introduce regressions like throwing errors and injecting latency. 
+
 ## Simulate a new release
 
-TODO: set `RELEASE` to `2`
+<div class="task" data-title="Task">
+
+> - Update the config of the Function Apps by setting the environment variable `RELEASE` to `2`. The function should start throwing errors for 10% of the requests.
+
+</div>
+
+TODO: describe the solution
 
 ## Re-run load testing
 
-TODO
+<div class="task" data-title="Task">
+
+> - Re-run the load test which you have created in the previous lab and observe if there are any changes compared to before
+
+</div>
+
+TODO: describe the solution
+
 
 ## Inspect errors
 
-TODO: use App Insights
+<div class="task" data-title="Task">
+
+> - Use Application Insights to find more details about the error that you started observing.
+> - Which service and which line of code is throwing this error ?
+
+</div>
+
+TODO: describe the solution
 
 ---
 
 # Lab 5 : Investigate latency issues
 
-## Simulate a new release
+The goal of this lab is to investigate potential latency issues.
+The release `3` introduces a latency of 2 seconds in the function, so you will start by simulating the deployment of that release.
+<div class="task" data-title="Task">
 
-TODO: set `RELEASE` to `3`
+> - Update the config of the Function Apps by setting the environment variable `RELEASE` to `3`. Request should now be 2 seconds slower compared to before.
+
+</div>
+
+TODO: describe the solution
 
 ## Re-run load testing
 
-TODO
+<div class="task" data-title="Task">
+
+> - Re-run the same load test which you have used in the previous lab and observe if there are any changes compared to before
+
+</div>
+
+TODO: describe the solution
 
 ## Inspect performance issues
 
-TODO: use App Insights / Performance
+<div class="task" data-title="Task">
 
+> - Use Application Insights to find more details about the latency issue that you started observing.
+
+</div>
+
+TODO: describe the solution
