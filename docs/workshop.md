@@ -58,6 +58,8 @@ TODO: add a diagram to illustrate the scenario and more details to the various s
 [loadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/overview-what-is-azure-load-testing
 [appinsights]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
 [devportal]: https://devportal.microsoft.com/
+[resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
+[functionloadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-load-test-function-app
 
 ---
 
@@ -104,7 +106,7 @@ We will be using a Dev Box with a customized image intended for full stack devel
 
 Use the integrated terminal to run the following commands:
 
-```bash
+```sh
 git clone https://github.com/ikhemissi/platform-engineering-summit-2024.git
 ```
 
@@ -132,24 +134,121 @@ git clone https://github.com/ikhemissi/platform-engineering-summit-2024.git
 
 # Lab 2 : Deploy your code to Azure
 
-## Create a deployment environment
+In this second lab we will focus on how to deploy our services to Azure.
 
-TODO
-
-
-## Inspect the resource group
-
-TODO
+To do this we need to:
+- Provision resources on Azure like the compute service which will host our code, the database, and the monitoring service
+- Package our code and deploy it to the provisioned resources
 
 
-## Deploy services with azd
+## Provision resources on Azure
 
-TODO
+Resource provisioning can be done [in many ways][resourcemanager]:
+- (Recommended) Using Infrastructure as Code (IaC) like Bicep and Terraform
+- Using the Azure CLI
+- Using APIs and SDKs
+- From the Azure Portal
+
+Working with IaC can be a challenge in some contexts like defining who can do what:
+- Who will be writing the IaC and guaranteeing it is compliant with company standards and best practices ?
+- Who will be creating resources using IaC, and how ? 
+
+[Azure Deployment Environments][ade] solves this problems by providing a framework for authoring "environment definitions", provisioning them, assigning resources to projects, and handling permissions.
+Environments can be created directly from the [Developer portal][devportal] or using a compatible tool like Azure Developer CLI (`azd`).
+
+
+<div class="task" data-title="Task">
+
+> - Create a new environment using the `Function` definition
+
+</div>
+
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the [Developer portal][devportal]
+1. Sign in using the provided credentials if needed
+1. Click on the `New` button on the top left and click on the `New environment` option. Copy the chosen name.
+1. Choose a short name and select `Project-1``
+1. Select the environment type `Dev` and the `Function` definition
+1. Hit `Next`
+1. Use the same environment name as in the previous step and leave the location as is.
+1. Hit `Create` and wait for the environment to be created
+
+</details>
+
+## Deploy services
+
+[`azd`][azd] simplifies the process of creating resources and deploying code by providing a simple abstraction on top of the various integrations (e.g. with compute and management services).
+
+
+<div class="task" data-title="Task">
+
+> - Using [`azd`][azd], select the ADE environment which you have previously created
+> - Deploy services to the selected environment
+
+</div>
+
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Log into Azure using `azd`
+
+```sh
+azd auth login
+```
+
+2. List available environments
+
+```sh
+azd env list
+```
+
+3. Select the remote environment which was created via Dev portal
+
+```sh
+azd env select <ade-environment-name>
+```
+
+4. Deploy services to the selected environment using the configuration defined in `azure.yaml`
+
+```sh
+azd deploy
+```
+
+Follow the wizard and wait until the deployment finishes.
+You should have access to the deployed service url (e.g. Function App) and the resource group which was used for the deployment.
+
+</details>
 
 
 ## Test deployed services
 
-TODO
+
+<div class="task" data-title="Task">
+
+> - Test the newly deployed function and make sure the changes you made in the last step of Lab 1 are being taken into account in the response of the function.
+
+</div>
+
+<div class="tip" data-title="Tips">
+
+> You can use the supplied `test.http` file to test the newly deployed function
+
+</div>
+
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the `test.http`
+1. Update the `@host` variable to point to your Function App
+1. Use the `Send Request` button on top of line 3 to send a request
+1. Make sure you see the change you made at the end of Lab 1 (e.g. adding a prefix to the response)
+
+</details>
 
 ---
 
@@ -157,15 +256,74 @@ TODO
 
 ## Create a load test
 
-TODO: use the Load Testing feature in the Function App to simplify test creation
+Using load testing can help identify potential issues (e.g. errors and latency) very early and reduce the impact of these issues on your users.
+
+TODO: Add a short description of Azure Load Testing, its benefits, and the integration with other services.
 
 ## Run the test
 
-TODO
+<div class="task" data-title="Task">
+
+> - Create a Load test for the Function endpoint
+> - Limit the duration of the test to 3 minutes
+
+</div>
+
+<div class="tip" data-title="Tips">
+
+> Use the direct integration of [Azure Load Testing with Azure Functions][functionloadtesting]
+
+</div>
+
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Locate the Function App in the Azure Portal
+1. Click on the `Load Testing (Preview)` blade
+1. Click on the `Create test` button
+1. Select the existing Azure Load Testing resource and provide a short name and description of the test
+1. Click on `Add request`
+1. Make sure the pre-populated request points to your Function endpoint and uses the right HTTP method (`POST`)
+1. Select the body tab, set the `Data type` value to `JSON view`, and paste the request body used in the file `test.http`
+1. Valide the request using the `Add` button
+1. Select the tab `Load configuration` and set `Test duration (minutes)` to 3
+1. Click on `Review + create` then on `Create`
+1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
+
+</details>
+
+As the test starts, you will see a `Load test results` dashboard with various metrics like the total number of requests, throughput, and error percentage.
+
+
+<div class="task" data-title="Task">
+
+> - What is the average response time ?
+
+</div>
+
+<summary>📚 Toggle solution</summary>
+
+1. Locate the `Aggregation` filter in the `Client-side metrics` panel
+1. Uncheck existing selection, select `Average`, then click on `Apply`
+1. Locate the metric below the graph in `Response time (successful responses)`. That is the average response time.
+
+</details>
+
 
 ## Check your stack using Application Map
 
-TODO
+TODO: add a short description App Insights and Application Map
+
+<div class="task" data-title="Task">
+
+> - Find out how what components are used within your stack/workload
+> - Which component depends on the other ?
+> - Where is most of the time spent when making a request to your function ?
+
+</div>
+
+TODO: add the solution
 
 ---
 
