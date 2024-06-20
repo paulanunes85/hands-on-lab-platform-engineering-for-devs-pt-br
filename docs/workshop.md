@@ -334,7 +334,18 @@ As the test starts, you will see a `Load test results` dashboard with various me
 
 ## Check your stack using Application Map
 
-TODO: add a short description App Insights and Application Map
+Application Insights is a feature of Azure Monitor and is a service provided by Microsoft Azure that helps developers monitor the performance and usage of their live web applications. It automatically collects telemetry data, provides analytical tools, and helps diagnose issues and understand what users actually do with your app.
+
+Key features of Application Insights include:
+
+- **Performance Monitoring**: It provides real-time insights into your application's performance and identifies any bottlenecks.
+- **Usage Analytics**: It tracks how users are interacting with your application and identifies any trends or patterns.
+- **Application Dependency Mapping**: It visualizes the components of your application and their interactions, helping you understand the impact of any changes or failures.
+- **Exception Tracking**: It captures and analyzes exceptions in your application, helping you diagnose and fix issues faster.
+
+The Application Map is a feature within Application Insights that provides a visual overview of the components of your application and their interactions. It shows the flow of requests across these components and helps identify any failures or performance bottlenecks. This makes it easier to understand the architecture of your application and diagnose any issues.
+
+![Application map](./media/application-map.png)
 
 <div class="task" data-title="Task">
 
@@ -525,4 +536,14 @@ Here is how you should proceed if you choose to rerun a test:
 
 </details>
 
-TODO: add more details about the Profiler of App Insights
+The Profiler in Application Insights is a powerful feature that allows developers to collect detailed performance data from a live web application. It's essentially a diagnostic tool that helps you understand the performance characteristics of your application and find the root cause of any performance issues.
+
+Here are some key details about the Profiler:
+
+- **Performance Tracing**: The Profiler can collect detailed traces of your application's performance, including the time taken by each operation. This can help you identify any bottlenecks or slow operations in your application.
+- **Code-Level Insights**: The Profiler can provide insights at the level of individual lines of code. This means you can see exactly which parts of your code are causing performance issues.
+- **Low Overhead**: The Profiler is designed to have a low overhead, so it won't significantly impact the performance of your application. This means you can use it in a live environment without worrying about affecting your users.
+- **Integration with Application Insights**: The Profiler is fully integrated with Application Insights, so you can correlate performance data with other telemetry data collected by Application Insights. This can give you a more complete picture of your application's performance.
+- **Triggered Profiling**: You can configure the Profiler to automatically start collecting data when certain conditions are met, such as a specific performance threshold being exceeded. This can help you catch intermittent performance issues that might be hard to reproduce.
+
+If you want more information about the profiler, please this [guide](https://learn.microsoft.com/en-us/azure/azure-monitor/profiler/profiler-overview)
