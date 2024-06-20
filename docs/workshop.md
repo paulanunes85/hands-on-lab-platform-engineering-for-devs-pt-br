@@ -54,18 +54,6 @@ We will be using the following services:
 
 ![Global diagram](./media/global-diagram.png)
 
-[az-portal]: https://portal.azure.com
-[vscode]: https://code.visualstudio.com/
-[devbox]: https://learn.microsoft.com/en-us/azure/dev-box/overview-what-is-microsoft-dev-box
-[ade]: https://learn.microsoft.com/en-us/azure/deployment-environments/overview-what-is-azure-deployment-environments
-[azd]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview
-[loadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/overview-what-is-azure-load-testing
-[appinsights]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
-[devportal]: https://devportal.microsoft.com/
-[resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
-[functionloadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-load-test-function-app
-[applicationmap]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map
-
 ---
 
 # Lab 1 : Make changes to the project
@@ -547,3 +535,17 @@ Here are some key details about the Profiler:
 - **Triggered Profiling**: You can configure the Profiler to automatically start collecting data when certain conditions are met, such as a specific performance threshold being exceeded. This can help you catch intermittent performance issues that might be hard to reproduce.
 
 If you want more information about the profiler, please this [guide](https://learn.microsoft.com/en-us/azure/azure-monitor/profiler/profiler-overview)
+
+
+
+[az-portal]: https://portal.azure.com
+[vscode]: https://code.visualstudio.com/
+[devbox]: https://learn.microsoft.com/en-us/azure/dev-box/overview-what-is-microsoft-dev-box
+[ade]: https://learn.microsoft.com/en-us/azure/deployment-environments/overview-what-is-azure-deployment-environments
+[azd]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview
+[loadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/overview-what-is-azure-load-testing
+[appinsights]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
+[devportal]: https://devportal.microsoft.com/
+[resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
+[functionloadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-load-test-function-app
+[applicationmap]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map
