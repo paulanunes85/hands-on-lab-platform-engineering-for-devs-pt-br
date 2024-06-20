@@ -68,10 +68,10 @@ We will be using the following services:
 
 ---
 
+# Lab 1 : Make changes to the project
+
 [devportal]: https://devportal.microsoft.com/
 [vscode]: https://code.visualstudio.com/
-
-# Lab 1 : Make changes to the project
 
 ## Setup your dev environment
 
@@ -147,11 +147,12 @@ git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-dev
 
 ---
 
+# Lab 2 : Deploy your code to Azure
+
 [resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
 [ade]: https://learn.microsoft.com/en-us/azure/deployment-environments/overview-what-is-azure-deployment-environments
 [azd]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview
 
-# Lab 2 : Deploy your code to Azure
 
 In this second lab we will focus on how to deploy our services to Azure.
 
