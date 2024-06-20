@@ -20,29 +20,29 @@ navigation_levels: 3
 
 # Platform engineering for devs
 
-Welcome to this workshop focusing on enhancing your dev experience by:
+Greetings! This workshop is designed to improve your development experience by:
 
-- Using a remote environment customized to your needs for a fast start on a project
-- Creating temporary test environments to assess your changes while being compliant with your organization policies
-- Using tools which can simplify the experience of managing environments on Azure and deploying your workload code
-- Leveraging load testing as a means for early issue detection
-- Debugging issues in a distributed workload
+- Utilizing a personalized remote environment for a quick project kickoff
+- Establishing temporary testing environments to evaluate your modifications in line with your company's guidelines
+- Employing tools that streamline the process of managing Azure environments and deploying your software
+- Harnessing load testing for early identification of potential issues
+- Troubleshooting issues in a distributed workload setup
 
-During this workshop you will have the instructions to complete each steps. It is recommended to search for the answers in provided resources and links before looking at the solutions placed under the '📚 Toggle solution' panel.
+During this workshop, you will receive instructions to complete each step. It is recommended that you search for the answers in the provided resources and links before looking at the solutions placed under the '📚 *Toggle solution*' panel.
 
 <div class="task" data-title="Task">
 
 > You will find the instructions and expected configurations for each Lab step in these yellow **TASK** boxes.
-> Inputs and parameters to select will be defined, all the rest can remain as default as it has no impact on the scenario.
+> Inputs and parameters to select will be defined; all the rest can remain at their default settings as they have no impact on the scenario
 >
-> Use the provided credentials to Log into the Azure subscription locally using Azure CLI and on the [Azure Portal][az-portal].
+> Use the provided credentials to log into the Azure subscription locally using Azure CLI and on the [Azure Portal][az-portal].
 > Instructions and solutions will be provided for `azd`, `Azure CLI`, and the portal, but you can also opt for using the Azure Portal during the entire workshop if you prefer.
 
 </div>
 
 ## Scenario
 
-The goal of the workshop is to edit the code of a simple Order management API, deploy it to Azure, and detect potential issues using load tests and monitoring.
+The goal of the workshop is to edit the code of a simple *Order management* API, deploy it to Azure, and detect potential issues using load tests and monitoring.
 
 We will be using the following services:
 
@@ -52,7 +52,7 @@ We will be using the following services:
 - [Azure Load Testing][loadtesting]
 - [Application Insights][appinsights]
 
-TODO: add a diagram to illustrate the scenario and more details to the various services ?
+![Global diagram](./media/global-diagram.png)
 
 [az-portal]: https://portal.azure.com
 [vscode]: https://code.visualstudio.com/
@@ -72,7 +72,14 @@ TODO: add a diagram to illustrate the scenario and more details to the various s
 
 ## Setup your dev environment
 
-TODO: add a brief description of Dev Box and its advantages
+Azure DevBox is a development environment provided by Microsoft Azure. It's essentially a cloud-based, pre-configured development environment that developers can use to write, run, and debug their code. Here are some of its advantages:
+
+- **Pre-configured Environment**: Azure DevBox comes with a pre-configured development environment, which includes a variety of popular programming languages, development tools, and frameworks. This saves developers the time and effort of setting up their own environment.
+- **Anywhere Access**: Since Azure DevBox is cloud-based, developers can access their development environment from anywhere, on any device. This makes it a great tool for remote teams and flexible working arrangements.
+- **Scalability**: Azure DevBox can easily scale up or down based on the needs of the project. This means developers can choose the right amount of resources for their project, without having to worry about over or under-provisioning.
+- **Integration with Azure Services**: Azure DevBox is fully integrated with other Azure services, making it easy to build, test, and deploy applications that use these services.
+- **Security**: Azure DevBox is hosted on Azure, which means it benefits from Azure's security measures. This includes features like Azure Security Center, Azure Active Directory, and compliance offerings.
+- **Collaboration**: Azure DevBox supports real-time collaboration between developers. This makes it easier for teams to work together on the same codebase, regardless of their physical location.
 
 We will be using a Dev Box with a customized image intended for full stack development. The Dev Box includes [VS Code][vscode] with few extensions, nodejs, git, az cli, and azd.
 
@@ -261,7 +268,18 @@ You should have access to the deployed service url (e.g. Function App) and the r
 
 Using load testing can help identify potential issues (e.g. errors and latency) very early and reduce the impact of these issues on your users.
 
-TODO: Add a short description of Azure Load Testing, its benefits, and the integration with other services.
+Azure Load Testing is a cloud-based service provided by Microsoft Azure that allows developers to simulate high volumes of user traffic to their applications. This service is designed to identify potential performance bottlenecks and ensure that applications can handle high loads, especially during peak times.
+
+Benefits of Azure Load Testing:
+
+- **Scalability**: Azure Load Testing can simulate thousands to millions of virtual users, allowing you to test your application under various load conditions.
+- **Ease of Use**: With its intuitive interface and pre-configured test templates, Azure Load Testing makes it easy to set up and run load tests.
+- **Detailed Reporting**: Azure Load Testing provides detailed reports and real-time analytics, helping you identify and resolve performance bottlenecks.
+- **Cost-Effective**: With Azure Load Testing, you only pay for what you use. This makes it a cost-effective solution for load testing.
+
+Integration with other services:
+
+Azure Load Testing integrates seamlessly with other Azure services. For instance, it can be used in conjunction with Azure Monitor and Application Insights to provide detailed performance metrics and insights. It also integrates with Azure DevOps, allowing you to incorporate load testing into your CI/CD pipeline.
 
 ## Run the test
 
