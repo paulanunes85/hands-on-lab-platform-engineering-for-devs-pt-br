@@ -55,19 +55,17 @@ We will be using the following services:
 ![Global diagram](./media/global-diagram.png)
 
 [az-portal]: https://portal.azure.com
-
 [devbox]: https://learn.microsoft.com/en-us/azure/dev-box/overview-what-is-microsoft-dev-box
 [ade]: https://learn.microsoft.com/en-us/azure/deployment-environments/overview-what-is-azure-deployment-environments
 [azd]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview
 [loadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/overview-what-is-azure-load-testing
 [appinsights]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
 [devportal]: https://devportal.microsoft.com/
-[resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
 [functionloadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-load-test-function-app
 [applicationmap]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map
 
 ---
-
+[devportal]: https://devportal.microsoft.com/
 [vscode]: https://code.visualstudio.com/
 
 # Lab 1 : Make changes to the project
@@ -145,6 +143,9 @@ git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-dev
 </details>
 
 ---
+[resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
+[ade]: https://learn.microsoft.com/en-us/azure/deployment-environments/overview-what-is-azure-deployment-environments
+[azd]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview
 
 # Lab 2 : Deploy your code to Azure
 
