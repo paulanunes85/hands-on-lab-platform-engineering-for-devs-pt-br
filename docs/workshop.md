@@ -67,6 +67,7 @@ We will be using the following services:
 [applicationmap]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map
 
 ---
+
 [devportal]: https://devportal.microsoft.com/
 [vscode]: https://code.visualstudio.com/
 
@@ -145,6 +146,7 @@ git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-dev
 </details>
 
 ---
+
 [resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
 [ade]: https://learn.microsoft.com/en-us/azure/deployment-environments/overview-what-is-azure-deployment-environments
 [azd]: https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview
