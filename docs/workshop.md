@@ -155,14 +155,14 @@ In this second lab we will focus on how to deploy our services to Azure.
 
 To do this we need to:
 
-- Provision resources on Azure like the compute service which will host our code, the database, and the monitoring service
+- Provision resources on Azure like the compute services which will host our code, the database, and the monitoring service
 - Package our code and deploy it to the provisioned resources
 
 ## Provision resources on Azure
 
 Resource provisioning can be done [in many ways][resourcemanager]:
 
-- (Recommended) Using Infrastructure as Code (IaC) like Bicep and Terraform
+- (Recommended) Using *Infrastructure as Code* (IaC) like Bicep or Terraform
 - Using the Azure CLI
 - Using APIs and SDKs
 - From the Azure Portal
@@ -170,7 +170,7 @@ Resource provisioning can be done [in many ways][resourcemanager]:
 Working with IaC can be a challenge in some contexts like defining who can do what:
 
 - Who will be writing the IaC and guaranteeing it is compliant with company standards and best practices ?
-- Who will be creating resources using IaC, and how ?
+- Who will be creating resources using IaC, and how ? (i.e. Who needs enought rights on Azure to provision them? How be agile ?)
 
 [Azure Deployment Environments][ade] solves this problems by providing a framework for authoring "environment definitions", provisioning them, assigning resources to projects, and handling permissions.
 Environments can be created directly from the [Developer portal][devportal] or using a compatible tool like Azure Developer CLI (`azd`).
@@ -192,9 +192,11 @@ Environments can be created directly from the [Developer portal][devportal] or u
 1. Select the environment type `Dev` and the `Function` definition
 1. Hit `Next`
 1. Use the same environment name as in the previous step and leave the location as is.
-1. Hit `Create` and wait for the environment to be created
+1. Hit `Create` and wait for the environment to be created (could take few minutes)
 
 </details>
+
+TODO: est-ce qu'on mettrait pas des screenshots ? est-ce qu'on leur demanderait pas d'aller dans le portail azure pour vérifier les resources déployées ? 
 
 ## Deploy services
 
@@ -204,6 +206,8 @@ Environments can be created directly from the [Developer portal][devportal] or u
 
 > - Using [`azd`][azd], select the ADE environment which you have previously created
 > - Deploy services to the selected environment
+
+TODO: j'ai un soucis avec le wording. est-ce que "services" c'est pas mieux si on mets "applications" car sinon on embrouille avec les services déployés par l'ADE
 
 </div>
 
@@ -217,7 +221,7 @@ Environments can be created directly from the [Developer portal][devportal] or u
 azd auth login
 ```
 
-2. List available environments
+2. List available environments using `env list`
 
 ```sh
 azd env list
@@ -244,7 +248,7 @@ You should have access to the deployed service url (e.g. Function App) and the r
 
 <div class="task" data-title="Task">
 
-> - Test the newly deployed function and make sure the changes you made in the last step of Lab 1 are being taken into account in the response of the function.
+Test the newly deployed function and make sure the changes you made in the last step of Lab 1 are being taken into account in the response of the function.
 
 </div>
 
@@ -290,8 +294,8 @@ Azure Load Testing integrates seamlessly with other Azure services. For instance
 
 <div class="task" data-title="Task">
 
-> - Create a Load test for the Function endpoint
-> - Limit the duration of the test to 3 minutes
+> - Create a Load test for the `Function` endpoint
+> - Limit the duration of the test to **3 minutes**
 
 </div>
 
