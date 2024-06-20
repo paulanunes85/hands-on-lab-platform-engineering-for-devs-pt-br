@@ -7,11 +7,13 @@ description: This workshop will guide you on how to fast start your dev experien
 level: beginner # Required. Can be 'beginner', 'intermediate' or 'advanced'
 navigation_numbering: false
 authors: # Required. You can add as many authors as needed
-  - Iheb Khemissi
-  - François-Xavier Kim
+  - Iheb KHEMISSI
+  - François-Xavier KIM
+  - Louis-Guillaume MORAND
 contacts: # Required. Must match the number of authors
   - "@ikhemissi"
   - "@frkim"
+  - "@lgmorand"
 duration_minutes: 180
 tags: azure, devbox, ade, deployment environment, azd, azure developer cli, azure functions, azure load testing, application insights
 navigation_levels: 3
