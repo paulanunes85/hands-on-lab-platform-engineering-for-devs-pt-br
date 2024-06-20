@@ -21,6 +21,7 @@ navigation_levels: 3
 # Platform engineering for devs
 
 Welcome to this workshop focusing on enhancing your dev experience by:
+
 - Using a remote environment customized to your needs for a fast start on a project
 - Creating temporary test environments to assess your changes while being compliant with your organization policies
 - Using tools which can simplify the experience of managing environments on Azure and deploying your workload code
@@ -39,12 +40,12 @@ During this workshop you will have the instructions to complete each steps. It i
 
 </div>
 
-
 ## Scenario
 
 The goal of the workshop is to edit the code of a simple Order management API, deploy it to Azure, and detect potential issues using load tests and monitoring.
 
 We will be using the following services:
+
 - [Microsoft Dev Box][devbox]
 - [Azure Deployment Environment][ade]
 - [Azure Developer CLI][azd]
@@ -100,7 +101,7 @@ We will be using a Dev Box with a customized image intended for full stack devel
 
 <div class="task" data-title="Task">
 
-> - Clone the project https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs
+> - Clone the project [https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs](https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs)
 
 </div>
 
@@ -141,25 +142,26 @@ git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-dev
 In this second lab we will focus on how to deploy our services to Azure.
 
 To do this we need to:
+
 - Provision resources on Azure like the compute service which will host our code, the database, and the monitoring service
 - Package our code and deploy it to the provisioned resources
-
 
 ## Provision resources on Azure
 
 Resource provisioning can be done [in many ways][resourcemanager]:
+
 - (Recommended) Using Infrastructure as Code (IaC) like Bicep and Terraform
 - Using the Azure CLI
 - Using APIs and SDKs
 - From the Azure Portal
 
 Working with IaC can be a challenge in some contexts like defining who can do what:
+
 - Who will be writing the IaC and guaranteeing it is compliant with company standards and best practices ?
-- Who will be creating resources using IaC, and how ? 
+- Who will be creating resources using IaC, and how ?
 
 [Azure Deployment Environments][ade] solves this problems by providing a framework for authoring "environment definitions", provisioning them, assigning resources to projects, and handling permissions.
 Environments can be created directly from the [Developer portal][devportal] or using a compatible tool like Azure Developer CLI (`azd`).
-
 
 <div class="task" data-title="Task">
 
@@ -185,7 +187,6 @@ Environments can be created directly from the [Developer portal][devportal] or u
 ## Deploy services
 
 [`azd`][azd] simplifies the process of creating resources and deploying code by providing a simple abstraction on top of the various integrations (e.g. with compute and management services).
-
 
 <div class="task" data-title="Task">
 
@@ -227,9 +228,7 @@ You should have access to the deployed service url (e.g. Function App) and the r
 
 </details>
 
-
 ## Test deployed services
-
 
 <div class="task" data-title="Task">
 
@@ -299,7 +298,6 @@ TODO: Add a short description of Azure Load Testing, its benefits, and the integ
 
 As the test starts, you will see a `Load test results` dashboard with various metrics like the total number of requests, throughput, and error percentage.
 
-
 <div class="task" data-title="Task">
 
 > - Find out the average response time ?
@@ -315,7 +313,6 @@ As the test starts, you will see a `Load test results` dashboard with various me
 1. Locate the metric below the graph in `Response time (successful responses)`. That is the average response time.
 
 </details>
-
 
 ## Check your stack using Application Map
 
@@ -353,7 +350,7 @@ TODO: add a short description App Insights and Application Map
 
 As you add new features to your application, few regressions may appear, hence the need for testing and monitoring to detect and fix these regressions.
 
-To simulate making changes and deploying new releases, the provided Function App relies on the `RELEASE` environment variable to control its behaviour and introduce regressions like throwing errors and injecting latency. 
+To simulate making changes and deploying new releases, the provided Function App relies on the `RELEASE` environment variable to control its behaviour and introduce regressions like throwing errors and injecting latency.
 
 ## Simulate a new release
 
@@ -422,7 +419,7 @@ Here is how you should proceed if you choose to rerun a test:
 1. Open the resource group on Azure portal
 1. Locate the Application Insights resource
 1. You should see a spike of errors on the `Failed requests` panel
-1. Use the `Failures` blade or click on the errors' chart 
+1. Use the `Failures` blade or click on the errors' chart
 1. Click on the top response code (`500`) on the right panel
 1. Select the suggested sample operation on the right panel
 1. You should see the details of the errors including any other service which was involved on the operation
@@ -461,7 +458,7 @@ The Function App will reload and then it will adapt its behavior to inject a lat
 
 </details>
 
-## Re-run load testing
+## Run load testing again
 
 <div class="task" data-title="Task">
 
@@ -496,7 +493,6 @@ Here is how you should proceed if you choose to rerun a test:
 
 </div>
 
-
 <details>
 
 <summary>📚 Toggle solution</summary>
@@ -504,12 +500,11 @@ Here is how you should proceed if you choose to rerun a test:
 1. Open the resource group on Azure portal
 1. Locate the Application Insights resource
 1. You should see an increase in response time on the `Server response time` panel
-1. Use the `Performance` blade or click on the response time chart 
+1. Use the `Performance` blade or click on the response time chart
 1. You should see the duration taken by each operation
 1. The `qna` operation should be unnaturally slow (+2 seconds) and you should see a red arrow on the right of the operation together with the percentage of increase in latency. That is the endpoint to investigate.
 1. You can use the `Profiler` to get more details about the origin of the issue
 
 </details>
-
 
 TODO: add more details about the Profiler of App Insights
