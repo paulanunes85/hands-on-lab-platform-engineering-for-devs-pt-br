@@ -60,6 +60,7 @@ TODO: add a diagram to illustrate the scenario and more details to the various s
 [devportal]: https://devportal.microsoft.com/
 [resourcemanager]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
 [functionloadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-load-test-function-app
+[applicationmap]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map
 
 ---
 
@@ -325,7 +326,23 @@ TODO: add a short description App Insights and Application Map
 
 </div>
 
-TODO: add the solution
+<div class="tip" data-title="Tips">
+
+> Check the [Application Map overview][applicationmap]
+
+</div>
+
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the resource group on Azure portal
+1. Locate the Application Insights resource
+1. Click on the `Application Map` blade
+1. You should see the various component of the stack and their dependencies
+1. Check the average duration spent on each component and locate the one where most of the time is spent
+
+</details>
 
 ---
 
@@ -343,7 +360,21 @@ To simulate making changes and deploying new releases, the provided Function App
 
 </div>
 
-TODO: describe the solution
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the resource group on Azure portal
+1. Locate the Function App
+1. Click on the `Environment variables` blade
+1. Click on the `RELEASE` environment variable to edit it
+1. Set the value to `2` and hit `Apply`
+1. Hit `Apply` to validate all changes on environment variables
+1. Select `Confirm`
+
+The Function App will reload and then it will adapt its behavior to throw errors at a 10% rate
+
+</details>
 
 ## Re-run load testing
 
@@ -353,8 +384,24 @@ TODO: describe the solution
 
 </div>
 
-TODO: describe the solution
+<details>
 
+<summary>📚 Toggle solution</summary>
+
+You can either opt for creating a new test like you did in Lab 3 or re-rerun an existing test.
+
+Here is how you should proceed if you choose to rerun a test:
+
+1. Locate the Function App in the Azure Portal
+1. Click on the `Load Testing (Preview)` blade
+1. Select any test in `Test runs` section
+1. Click on the `Rerun` button on the top
+1. Optionally provide a short description (e.g. `Checking for errors`)
+1. Click on the `Rerun` button
+1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
+1. Click on the new test run to access test results
+
+</details>
 
 ## Inspect errors
 
@@ -365,7 +412,23 @@ TODO: describe the solution
 
 </div>
 
-TODO: describe the solution
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the resource group on Azure portal
+1. Locate the Application Insights resource
+1. You should see a spike of errors on the `Failed requests` panel
+1. Use the `Failures` blade or click on the errors' chart 
+1. Click on the top response code (`500`) on the right panel
+1. Select the suggested sample operation on the right panel
+1. You should see the details of the errors including any other service which was involved on the operation
+1. Click on `Traces and Events`
+1. Select the exception to access its call stack
+1. Check the `message` on the right panel and click on `[show more]` to get more details
+1. You should see a reference to `Random error`, the file `api.js` where the error was triggered, and the call trace including line numbers
+
+</details>
 
 ---
 
@@ -379,7 +442,21 @@ The release `3` introduces a latency of 2 seconds in the function, so you will s
 
 </div>
 
-TODO: describe the solution
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the resource group on Azure portal
+1. Locate the Function App
+1. Click on the `Environment variables` blade
+1. Click on the `RELEASE` environment variable to edit it
+1. Set the value to `3` and hit `Apply`
+1. Hit `Apply` to validate all changes on environment variables
+1. Select `Confirm`
+
+The Function App will reload and then it will adapt its behavior to inject a latency of 2 seconds
+
+</details>
 
 ## Re-run load testing
 
@@ -389,7 +466,24 @@ TODO: describe the solution
 
 </div>
 
-TODO: describe the solution
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+You can either opt for creating a new test like you did in Lab 3 or re-rerun an existing test.
+
+Here is how you should proceed if you choose to rerun a test:
+
+1. Locate the Function App in the Azure Portal
+1. Click on the `Load Testing (Preview)` blade
+1. Select any test in `Test runs` section
+1. Click on the `Rerun` button on the top
+1. Optionally provide a short description (e.g. `Checking for latency issues`)
+1. Click on the `Rerun` button
+1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
+1. Click on the new test run to access test results
+
+</details>
 
 ## Inspect performance issues
 
@@ -399,4 +493,20 @@ TODO: describe the solution
 
 </div>
 
-TODO: describe the solution
+
+<details>
+
+<summary>📚 Toggle solution</summary>
+
+1. Open the resource group on Azure portal
+1. Locate the Application Insights resource
+1. You should see an increase in response time on the `Server response time` panel
+1. Use the `Performance` blade or click on the response time chart 
+1. You should see the duration taken by each operation
+1. The `qna` operation should be unnaturally slow (+2 seconds) and you should see a red arrow on the right of the operation together with the percentage of increase in latency. That is the endpoint to investigate.
+1. You can use the `Profiler` to get more details about the origin of the issue
+
+</details>
+
+
+TODO: add more details about the Profiler of App Insights
