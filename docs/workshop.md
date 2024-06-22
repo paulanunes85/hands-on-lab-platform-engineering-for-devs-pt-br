@@ -101,7 +101,7 @@ We will be using a Dev Box with a customized image intended for full stack devel
 1. Sign in using the provided credentials.
 1. Locate your Dev Box and click on the `Open in RDP client` button
 1. Click on the `Connect` button
-1. Wait until the Dec Box starts
+1. Wait until the Dev Box starts
 1. Open VS Code
 1. Check the installed extensions, you should be able to see Azure and Github extensions (among others)
 
@@ -173,7 +173,7 @@ Resource provisioning can be done [in many ways][resourcemanager]:
 Working with IaC can be a challenge in some contexts like defining who can do what:
 
 - Who will be writing the IaC and guaranteeing it is compliant with company standards and best practices ?
-- Who will be creating resources using IaC, and how ? (i.e. Who needs enought rights on Azure to provision them? How be agile ?)
+- Who will be creating resources using IaC, and how ? (i.e. Who needs enough rights on Azure to provision them? How be agile ?)
 
 [Azure Deployment Environments][ade] solves this problems by providing a framework for authoring "environment definitions", provisioning them, assigning resources to projects, and handling permissions.
 Environments can be created directly from the [Developer portal][devportal] or using a compatible tool like Azure Developer CLI (`azd`).
@@ -391,7 +391,7 @@ The Application Map is a feature within Application Insights that provides a vis
 
 As you add new features to your application, few regressions may appear, hence the need for testing and monitoring to detect and fix these regressions.
 
-To simulate making changes and deploying new releases, the provided Function App relies on the `RELEASE` environment variable to control its behaviour and introduce regressions like throwing errors and injecting latency.
+To simulate making changes and deploying new releases, the provided Function App relies on the `RELEASE` environment variable to control its behavior and introduce regressions like throwing errors and injecting latency.
 
 ## Simulate a new release
 
