@@ -54,7 +54,7 @@ We will be using the following services:
 - [Azure Load Testing][loadtesting]
 - [Application Insights][appinsights]
 
-![Global diagram](./media/global-diagram.png)
+![Global diagram](./assets/global-diagram.png)
 
 [az-portal]: https://portal.azure.com
 [devbox]: https://learn.microsoft.com/en-us/azure/dev-box/overview-what-is-microsoft-dev-box
@@ -199,7 +199,7 @@ Environments can be created directly from the [Developer portal][devportal] or u
 
 </details>
 
-TODO: est-ce qu'on mettrait pas des screenshots ? est-ce qu'on leur demanderait pas d'aller dans le portail azure pour vérifier les resources déployées ? 
+<!-- TODO: est-ce qu'on mettrait pas des screenshots ? est-ce qu'on leur demanderait pas d'aller dans le portail azure pour vérifier les resources déployées ?  -->
 
 ## Deploy services
 
@@ -208,9 +208,9 @@ TODO: est-ce qu'on mettrait pas des screenshots ? est-ce qu'on leur demanderait 
 <div class="task" data-title="Task">
 
 > - Using [`azd`][azd], select the ADE environment which you have previously created
-> - Deploy services to the selected environment
+> - Deploy your applications (azd services) to the selected environment
 
-TODO: j'ai un soucis avec le wording. est-ce que "services" c'est pas mieux si on mets "applications" car sinon on embrouille avec les services déployés par l'ADE
+<!-- TODO: j'ai un soucis avec le wording. est-ce que "services" c'est pas mieux si on mets "applications" car sinon on embrouille avec les services déployés par l'ADE -->
 
 </div>
 
@@ -218,25 +218,31 @@ TODO: j'ai un soucis avec le wording. est-ce que "services" c'est pas mieux si o
 
 <summary>📚 Toggle solution</summary>
 
-1. Log into Azure using `azd`
+1. Enable Dev Center integration
+
+```sh
+azd config set platform.type devcenter
+```
+
+2. Log into Azure using `azd`
 
 ```sh
 azd auth login
 ```
 
-2. List available environments using `env list`
+3. List available environments using `env list`
 
 ```sh
 azd env list
 ```
 
-3. Select the remote environment which was created via Dev portal
+4. Select the remote environment which was created via Dev portal
 
 ```sh
 azd env select <ade-environment-name>
 ```
 
-4. Deploy services to the selected environment using the configuration defined in `azure.yaml`
+5. Deploy services to the selected environment using the configuration defined in `azure.yaml`
 
 ```sh
 azd deploy
@@ -357,7 +363,7 @@ Key features of Application Insights include:
 
 The Application Map is a feature within Application Insights that provides a visual overview of the components of your application and their interactions. It shows the flow of requests across these components and helps identify any failures or performance bottlenecks. This makes it easier to understand the architecture of your application and diagnose any issues.
 
-![Application map](./media/application-map.png)
+![Application map](./assets/application-map.png)
 
 <div class="task" data-title="Task">
 
@@ -558,4 +564,4 @@ Here are some key details about the Profiler:
 - **Integration with Application Insights**: The Profiler is fully integrated with Application Insights, so you can correlate performance data with other telemetry data collected by Application Insights. This can give you a more complete picture of your application's performance.
 - **Triggered Profiling**: You can configure the Profiler to automatically start collecting data when certain conditions are met, such as a specific performance threshold being exceeded. This can help you catch intermittent performance issues that might be hard to reproduce.
 
-If you want more information about the profiler, please this [guide](https://learn.microsoft.com/en-us/azure/azure-monitor/profiler/profiler-overview)
+If you want more information about the profiler, please follow this [guide](https://learn.microsoft.com/en-us/azure/azure-monitor/profiler/profiler-overview)
