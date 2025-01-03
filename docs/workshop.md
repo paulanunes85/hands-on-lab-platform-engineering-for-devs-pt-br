@@ -1,7 +1,7 @@
 ---
 published: true
 type: workshop
-title: Platform engineering for devs Hands-on Lab
+title: Platform engineering for Devs Hands-on Lab
 short_title: Platform engineering for devs
 description: This workshop will guide you on how to fast start your dev experience, how to deploy to Azure, and how to detect potential issues with your code during runtime.
 level: beginner # Required. Can be 'beginner', 'intermediate' or 'advanced'
@@ -20,7 +20,7 @@ navigation_levels: 3
 
 ---
 
-# Platform engineering for devs
+# Platform Engineering for Devs
 
 Greetings! This workshop is designed to improve your development experience by:
 
@@ -34,7 +34,7 @@ During this workshop, you will receive instructions to complete each step. It is
 
 <div class="task" data-title="Task">
 
-> You will find the instructions and expected configurations for each Lab step in these yellow **TASK** boxes.
+> You will find the instructions and expected configurations for each lab step in these yellow **TASK** boxes.
 > Inputs and parameters to select will be defined; all the rest can remain at their default settings as they have no impact on the scenario
 >
 > Use the provided credentials to log into the Azure subscription locally using Azure CLI and on the [Azure Portal][az-portal].
@@ -42,9 +42,62 @@ During this workshop, you will receive instructions to complete each step. It is
 
 </div>
 
+## What is Platform Engineering
+
+While people give different definitions to the DevOps (a job, automating processes, corporate organisation, mixing Dev And Ops), the Platform engineering is the practice of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era. It focuses on creating a standardized platform that developers can use to build, deploy, and manage applications efficiently. The goal is to reduce complexity, improve developer productivity, and ensure consistency across the development lifecycle.
+
+#### Key aspects of platform engineering include:
+
+- Automation: Automating repetitive tasks to reduce manual intervention.
+- Standardization: Creating standardized environments and workflows to ensure consistency.
+- Self-Service: Enabling developers to provision and manage their own environments and resources.
+- Scalability: Designing platforms that can scale with the needs of the organization.
+- Security: Ensuring that security best practices are integrated into the platform.
+
+While both platform engineering and DevOps aim to improve the efficiency and effectiveness of software development and operations, they focus on different aspects and have distinct roles:
+
+**Scope**
+
+- Platform Engineering: Focuses on building and maintaining the underlying infrastructure and tools that developers use to build, deploy, and manage applications. It creates a standardized platform that abstracts away the complexities of the underlying infrastructure.
+- DevOps: Focuses on the collaboration between development and operations teams to streamline the software delivery process. It emphasizes practices like continuous integration, continuous delivery, and infrastructure as code.
+
+**Responsibilities**
+
+- Platform Engineers: Responsible for creating and maintaining the platform, ensuring it meets the needs of the development teams, and providing self-service capabilities.
+- DevOps Engineers: Responsible for implementing and managing the CI/CD pipelines, automating deployment processes, and ensuring the reliability and scalability of applications in production.
+
+**Goals**
+
+- Platform Engineering: Aims to provide a seamless and efficient development environment that reduces friction and increases developer productivity.
+- DevOps: Aims to improve collaboration between development and operations, reduce the time to market, and ensure the stability and reliability of applications.
+
+In summary, platform engineering focuses on building the tools and infrastructure that developers use, while DevOps focuses on the processes and practices that enable efficient software delivery and operations. Both are essential for modern software development but address different challenges within the organization.
+
+## Microsoft vision
+
+![Start Right, Stay Right, Get Right](./assets/plateng2.png)
+
+As you embark on your own platform engineering journey, you'll likely encounter three key motions:
+
+- "**Start Right**" focuses on equipping your developers with self-service tools, enabling them to kickstart their projects quickly while adhering to your company's best practices defined through templates and policies.
+- "**Stay Right**" is all about maintaining compliance as your projects grow and ensuring that developers continue to follow those best practices via continous automation and monitoring.
+- Finally, "**Get Right**" campaigns assist developers in bringing their existing DevOps infrastructure, code, and applications into compliance within your company's evolving standards.  
+
+But the best compliance work feels "free“ to the developer - it's automated, invisible, and so ingrained in tools and processes that much of it is embedded." 
+
+To answer these three motions, the company needs to set up a platform with a toolbox composed of several products:
+
+![Key aspects of a Engineering Platform](./assets/plateng1.png)
+
+As Microsoft, we offer an product for each of these components
+
+![Platform Engineering components](./assets/plateng3.png)
+
 ## Scenario
 
-The goal of the workshop is to edit the code of a simple *Order management* API, deploy it to Azure, and detect potential issues using load tests and monitoring.
+We can't cover all these products in one lab, so we'll focus on some of them that have great traction with our customers.
+
+The goal of the workshop is to edit the code of a simple *Order Management* API, deploy it to Azure, and detect potential issues using load tests and monitoring.
 
 We will be using the following services:
 
@@ -84,7 +137,7 @@ Azure DevBox is a development environment provided by Microsoft Azure. It's esse
 - **Security**: Azure DevBox is hosted on Azure, which means it benefits from Azure's security measures. This includes features like Azure Security Center, Azure Active Directory, and compliance offerings.
 - **Collaboration**: Azure DevBox supports real-time collaboration between developers. This makes it easier for teams to work together on the same codebase, regardless of their physical location.
 
-We will be using a Dev Box with a customized image intended for full stack development. The Dev Box includes [VS Code][vscode] with few extensions, nodejs, git, az cli, and azd.
+We will be using a Dev Box with a customized image intended for full stack development. The Dev Box includes [VS Code][vscode] with a few extensions such as Node.js, git, Azure CLI, and azd.
 
 <div class="task" data-title="Task">
 
@@ -103,7 +156,7 @@ We will be using a Dev Box with a customized image intended for full stack devel
 1. Click on the `Connect` button
 1. Wait until the Dev Box starts
 1. Open VS Code
-1. Check the installed extensions, you should be able to see Azure and Github extensions (among others)
+1. Check the installed extensions, you should be able to see Azure and GitHub extensions (among others)
 
 </details>
 
@@ -191,7 +244,7 @@ Environments can be created directly from the [Developer portal][devportal] or u
 1. Open the [Developer portal][devportal]
 1. Sign in using the provided credentials if needed
 1. Click on the `New` button on the top left and click on the `New environment` option. Copy the chosen name.
-1. Choose a short name and select `Project-1``
+1. Choose a short name and select `Project-1`
 1. Select the environment type `Dev` and the `Function` definition
 1. Hit `Next`
 1. Use the same environment name as in the previous step and leave the location as is.
@@ -209,8 +262,6 @@ Environments can be created directly from the [Developer portal][devportal] or u
 
 > - Using [`azd`][azd], select the ADE environment which you have previously created
 > - Deploy your applications (azd services) to the selected environment
-
-<!-- TODO: j'ai un soucis avec le wording. est-ce que "services" c'est pas mieux si on mets "applications" car sinon on embrouille avec les services déployés par l'ADE -->
 
 </div>
 
