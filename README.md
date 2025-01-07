@@ -2,6 +2,12 @@
 
 This workshop will guide you on how to fast start your dev experience, how to deploy to Azure, and how to detect potential issues with your code during runtime.
 
+## Provisioning
+
+Since DevBox can takes hours to deploy, it's interesting to prepare the environment before the students use the lab. You can have **one** subscription with **one** devcenter and **one** (or several) projects. Then, each student will use his own dev box. DevBox can be requested in advance.
+
+Follow [the procedure](./provisioning/provisioning.md)
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

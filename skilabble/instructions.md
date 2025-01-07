@@ -1,26 +1,10 @@
----
-published: true
-type: workshop
-title: Platform engineering for Devs Hands-on Lab
-short_title: Platform engineering for devs
-description: This workshop will guide you on how to fast start your dev experience, how to deploy to Azure, and how to detect potential issues with your code during runtime.
-level: beginner # Required. Can be 'beginner', 'intermediate' or 'advanced'
-navigation_numbering: false
-authors: # Required. You can add as many authors as needed
-  - Iheb KHEMISSI
-  - François-Xavier KIM
-  - Louis-Guillaume MORAND
-contacts: # Required. Must match the number of authors
-  - "@ikhemissi"
-  - "@frkim"
-  - "@lgmorand"
-duration_minutes: 180
-tags: azure, devbox, ade, deployment environment, azd, azure developer cli, azure functions, azure load testing, application insights
-navigation_levels: 3
+@lab.Title
+
+Login to your VM with the following credentials...
+
+> [!warning] All required credentials are in the **Resources** tab
 
 ---
-
-# Platform Engineering for Devs
 
 Greetings! This workshop is designed to improve your development experience by:
 
@@ -30,21 +14,18 @@ Greetings! This workshop is designed to improve your development experience by:
 - Harnessing load testing for early identification of potential issues
 - Troubleshooting issues in a distributed workload setup
 
-During this workshop, you will receive instructions to complete each step. It is recommended that you search for the answers in the provided resources and links before looking at the solutions placed under the '📚 *Toggle solution*' panel.
+> [!warning] When you started this lab, some provisionning was triggered in background to deploy resources in a dedicated subscription (ie. DevCenter, etc). You don't need to rush as resources may be not be fully deployed if you skip the introduction. It takes roughly 5-7 minutes to deploy everything.
 
-<div class="task" data-title="Task">
+During this workshop, you will receive instructions to complete each step. It is recommended that you search for the answers in the provided resources and links before looking at the solutions placed under the '*Toggle solution*' panel.
 
-> You will find the instructions and expected configurations for each lab step in these yellow **TASK** boxes.
+> [!note] You will find the instructions and expected configurations for each lab step in these **Task** boxes.
 > Inputs and parameters to select will be defined; all the rest can remain at their default settings as they have no impact on the scenario
->
-> Use the provided credentials to log into the Azure subscription locally using Azure CLI and on the [Azure Portal][az-portal].
-> Instructions and solutions will be provided for `azd`, `Azure CLI`, and the portal, but you can also opt for using the Azure Portal during the entire workshop if you prefer.
-
-</div>
+> Use the provided credentials to log into the Azure subscription locally using Azure CLI and on the [Azure Portal](https://portal.azure.com).
+> Instructions and solutions will be provided for *azd*, *Azure CLI*, and the portal, but you can also opt for using the Azure Portal during the entire workshop if you prefer.
 
 ## What is Platform Engineering
 
-While people give different definitions to the DevOps (a job, automating processes, corporate organisation, mixing Dev And Ops), the Platform engineering is the practice of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era. It focuses on creating a standardized platform that developers can use to build, deploy, and manage applications efficiently. The goal is to reduce complexity, improve developer productivity, and ensure consistency across the development lifecycle.
+While people give different definitions to DevOps (a job, automating processes, corporate organisation, mixing Dev And Ops, etc), the Platform engineering is the practice of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era. It focuses on creating a standardized platform that developers can use to build, deploy, and manage applications efficiently. The goal is to reduce complexity, improve developer productivity, and ensure consistency across the development lifecycle.
 
 #### Key aspects of platform engineering include:
 
@@ -75,9 +56,9 @@ In summary, platform engineering focuses on building the tools and infrastructur
 
 ## Microsoft vision
 
-![Start Right, Stay Right, Get Right](./assets/intro/plateng2.png)
+!IMAGE[plateng2.png](instructions281629/plateng2.png)
 
-As you embark on your own platform engineering journey, you'll likely encounter three key motions:
+As you embark on your own platform engineering journey with Microsoft, you'll likely encounter three key motions:
 
 - "**Start Right**" focuses on equipping your developers with self-service tools, enabling them to kickstart their projects quickly while adhering to your company's best practices defined through templates and policies.
 - "**Stay Right**" is all about maintaining compliance as your projects grow and ensuring that developers continue to follow those best practices via continous automation and monitoring.
@@ -87,11 +68,11 @@ But the best compliance work feels "free“ to the developer - it's automated, i
 
 To answer these three motions, the company needs to set up a platform with a toolbox composed of several products:
 
-![Key aspects of a Engineering Platform](./assets/intro/plateng1.png)
+!IMAGE[plateng1.png](instructions281629/plateng1.png)
 
-As Microsoft, we offer an product for each of these components
+As Microsoft, we offer n product for each of these components
 
-![Platform Engineering components](./assets/intro/plateng3.png)
+!IMAGE[plateng3.png](instructions281629/plateng3.png)
 
 ## Scenario
 
@@ -107,7 +88,7 @@ We will be using the following services:
 - [Azure Load Testing][loadtesting]
 - [Application Insights][appinsights]
 
-![Global diagram](./assets/intro/global-diagram.png)
+!IMAGE[global-diagram.png](instructions281629/global-diagram.png)
 
 [az-portal]: https://portal.azure.com
 [devbox]: https://learn.microsoft.com/en-us/azure/dev-box/overview-what-is-microsoft-dev-box
@@ -119,16 +100,17 @@ We will be using the following services:
 [functionloadtesting]: https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-load-test-function-app
 [applicationmap]: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-map
 
----
+===
 
 # Lab 1 : Make changes to the project
 
 [devportal]: https://devportal.microsoft.com/
 [vscode]: https://code.visualstudio.com/
+[azure]: https://portal.azure.com/
 
 ## Setup your dev environment
 
-[Azure DevBox][devbox] is a development environment provided by Microsoft Azure. It's essentially a cloud-based, pre-configured development environment that developers can use to write, run, and debug their code. Here are some of its advantages:
+Azure DevBox is a development environment provided by Microsoft Azure. It's essentially a cloud-based, pre-configured development environment that developers can use to write, run, and debug their code. Here are some of its advantages:
 
 - **Pre-configured Environment**: Azure DevBox comes with a pre-configured development environment, which includes a variety of popular programming languages, development tools, and frameworks. This saves developers the time and effort of setting up their own environment.
 - **Anywhere Access**: Since Azure DevBox is cloud-based, developers can access their development environment from anywhere, on any device. This makes it a great tool for remote teams and flexible working arrangements.
@@ -139,66 +121,76 @@ We will be using the following services:
 
 We will be using a Dev Box with a customized image intended for full stack development. The Dev Box includes [VS Code][vscode] with a few extensions such as Node.js, git, Azure CLI, and azd.
 
-<div class="task" data-title="Task">
+> [!note] **Task**
+> 
+> - Log into the Azure portal
+> - Find the DevCenter and check the projet and its configuration
 
+>[+] *Toggle Solution*
+> 
+> 1. Open the [Azure portal][azureportal]
+> 1. Sign in using the provided credentials (**see Resources tab**)
+> 1. Look for the resource group named **rg-plateng**
+> 1. Open the DevCenter resource
+> 1. As you can see, a project has been created, with pools and devbox definitions. That's the one you are going to be able to use
+> !IMAGE[devcenter-project.png](instructions281629/devcenter-project.png)
+> 1. At the devcenter level (not project!), a catalog has been created. Click on it, it contains environment definitions (*Infra as Code*) that users can use and deploy on demand
+> !IMAGE[devcenter-catalog.png](instructions281629/devcenter-catalog.png)
+
+> [!note] **Task**
+> 
 > - Log into the Developer portal and connect to your Dev Box
 > - Open VS Code
 
-</div>
+>[+] *Toggle Solution*
+> 
+> 1. Open the [Developer portal][devportal]
+> 1. Sign in using the provided credentials (**see Resources tab**).
+> 1. Ask for a new DevBox, you can choose between 2 VMs profiles (**WebDevPool** and **WebDevPoolPowerful**)
+> !IMAGE[devportal.png](instructions281629/devportal.png)
+> !IMAGE[devportal2.png](instructions281629/devportal2.png)
+> 1. If you want to can use customizations. It means loaded a YAML file containing the customization you want to apply to your devbox on startup.
+> 1. !IMAGE[devportal3.png](instructions281629/devportal3.png)
+> 1. Once the Dev Box is created, click on the __Connect__ button
+> 1. Wait until the Dev Box starts
+> 1. Open VS Code
+> 1. Check the installed extensions, you should be able to see Azure and GitHub extensions (among others)
 
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the [Developer portal][devportal]
-1. Sign in using the provided credentials.
-1. Locate your Dev Box and click on the `Open in RDP client` button
-1. Click on the `Connect` button
-1. Wait until the Dev Box starts
-1. Open VS Code
-1. Check the installed extensions, you should be able to see Azure and GitHub extensions (among others)
-
-</details>
+> [!warning]
+> An Azure DevBox provisionning can take up to **one hour** due to Intune enrollment. The product group is working to reduce this time in the upcoming months. Since the your time in this classroom is limited, please use the lab's VM instead, it will act as your "DevBox" as requirements have been installed on it too (NodeJS, VSCode, AZD, etc.). The creation you just did was to understand the user experience developers would have in real life.
 
 ## Clone the project
 
-<div class="task" data-title="Task">
+> [!note] **Task**
+> 
+> On your **desktop**, clone the project [https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs](https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs)
+> Place your command line inside this new folder.
 
-> - Clone the project [https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs](https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs)
 
-</div>
+>[+] *Toggle Solution*
+>
+> Use the integrated terminal to run the following commands:
+> 
+> ```sh
+> git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs.git
+> ```
 
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-Use the integrated terminal to run the following commands:
-
-```sh
-git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs.git
-```
-
-</details>
 
 ## Update the code
 
-<div class="task" data-title="Task">
+> [!note] **Task**
+> 
+> Update the *qna* endpoint in *servicess/api/src/api.js* by prefixing the return value with a prefix of your choice
 
-> - Update the `qna` endpoint in `services/api/src/api.js` by prefixing the return value with a prefix of your choice
 
-</div>
 
-<details>
+>[+] *Toggle Solution*
+>
+> 1. Open the file **services/api/src/api.js**
+> 1. Locate the line **answer: '42'**,
+> 1. Replace **'42'** with **'PREFIX 42'** where **PREFIX** is your initials
 
-<summary>📚 Toggle solution</summary>
-
-1. Open the file `services/api/src/api.js`
-1. Locate the line `answer: '42',`
-1. Replace '42' with 'PREFIX 42' where `PREFIX` is your initials
-
-</details>
-
----
+===
 
 # Lab 2 : Deploy your code to Azure
 
@@ -231,105 +223,90 @@ Working with IaC can be a challenge in some contexts like defining who can do wh
 [Azure Deployment Environments][ade] solves this problems by providing a framework for authoring "environment definitions", provisioning them, assigning resources to projects, and handling permissions.
 Environments can be created directly from the [Developer portal][devportal] or using a compatible tool like Azure Developer CLI (`azd`).
 
-<div class="task" data-title="Task">
+> [!note] **Task**
+> 
+> Create a new environment using the **Function** definition
 
-> - Create a new environment using the `Function` definition
-> - Check in Azure portal that resources have been deployed
-
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the [Developer portal][devportal]
-1. Sign in using the provided credentials if needed
-1. Click on the `New` button on the top left and click on the `New environment` option. Copy the chosen name.
-1. Choose a short name and select `Project-1`
-1. Select the environment type `Dev` and the `Function` definition
-1. Hit `Next`
-1. Use the same environment name as in the previous step and leave the location as is.
-1. Hit `Create` and wait for the environment to be created (could take few minutes)
-![Create environment - step 1](./assets/lab2/devcenter-ade.png)
-![Create environment - creating...](./assets/lab2/devcenter-ade-creation.png)
-</details>
+>[+] *Toggle Solution*
+>
+> 1. Open the [Developer portal][devportal]
+> 1. Sign in using the provided credentials if needed
+> 1. Click on the **New** button on the top left and click on the **New environment** option. Copy the chosen name.
+> 1. Choose a short name and select **Project-1**
+> 1. Select the environment type **Dev** and the **Function** definition
+> !IMAGE[devcenter-ade.png](instructions281629/devcenter-ade.png)
+> 1. Hit **Next**
+> 1. Use the same environment name as in the previous step and leave the location as is.
+> 1. Hit **Create** and wait for the environment to be created (could take few minutes)
+> !IMAGE[devcenter-ade-creation.png](instructions281629/devcenter-ade-creation.png)
 
 ## Deploy services
 
-[`azd`][azd] simplifies the process of creating resources and deploying code by providing a simple abstraction on top of the various integrations (e.g. with compute and management services).
+[*azd*][azd] simplifies the process of creating resources and deploying code by providing a simple abstraction on top of the various integrations (e.g. with compute and management services).
 
-<div class="task" data-title="Task">
-
-> - Using [`azd`][azd], select the ADE environment which you have previously created
+> [!note] **Task**
+> 
+> - Using [*azd*][azd], select the ADE environment which you have previously created
 > - Deploy your applications (azd services) to the selected environment
 
-</div>
+> [!warning] 
+> Be sure that your command line current folder is the one you just cloned. You must be inside the cloned folder, not the parent.
 
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Enable Dev Center integration
-
-```sh
-azd config set platform.type devcenter
-```
-
-2. Log into Azure using `azd`
-
-```sh
-azd auth login
-```
-
-3. List available environments using `env list`
-
-```sh
-azd env list
-```
-
-4. Select the remote environment which was created via Dev portal
-
-```sh
-azd env select <ade-environment-name>
-```
-
-5. Deploy services to the selected environment using the configuration defined in `azure.yaml`
-
-```sh
-azd deploy
-```
+>[+] *Toggle Solution*
+>
+>1. Enable Dev Center integration
+>
+>```sh
+>azd config set platform.type devcenter
+>```
+>
+>2. Log into Azure using **azd**
+>
+>```sh
+>azd auth login
+>```
+>
+>3. List available environments using **env list**
+>
+>```sh
+>azd env list
+>```
+>
+>4. Select the remote environment which was created via Dev portal
+>
+>```sh
+>azd env select <ade-environment-name>
+>```
+>
+>5. Deploy services to the selected environment using the configuration defined in **azure.yaml**
+>
+>```sh
+>azd deploy
+>```
+> !IMAGE[azd-deploy.png](instructions281629/azd-deploy.png)
 
 Follow the wizard and wait until the deployment finishes.
 You should have access to the deployed service url (e.g. Function App) and the resource group which was used for the deployment.
 
-</details>
-
 ## Test deployed services
 
-<div class="task" data-title="Task">
+> [!note] **Task**
+> 
+> Test the newly deployed function and make sure the changes you made in the last step of Lab n°1 are being taken into account in the response of the function.
 
-Test the newly deployed function and make sure the changes you made in the last step of Lab 1 are being taken into account in the response of the function.
+> [!hint] **Tip**
+> 
+> You can use the supplied *test.http* file to test the newly deployed function
 
-</div>
+>[+] *Toggle Solution*
+>
+> 1. Open the **test.http**
+> 1. Update the **@host** variable to point to your Function App
+> 1. Use the **Send Request** button on top of line 3 to send a request. It comes from the extension **REST Client (by Huachao Mao)**, normally already installed on your VS Code
+> !IMAGE[request.png](instructions281629/request.png)
+> 1. Make sure you see the change you made at the end of Lab 1 (e.g. adding a prefix to the response)
 
-<div class="tip" data-title="Tips">
-
-> You can use the supplied `test.http` file to test the newly deployed function
-
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the `test.http`
-1. Update the `@host` variable to point to your Function App
-1. Use the `Send Request` button on top of line 3 to send a request
-1. Make sure you see the change you made at the end of Lab 1 (e.g. adding a prefix to the response)
-
-</details>
-
----
+===
 
 # Lab 3 : Load testing
 
@@ -352,54 +329,42 @@ Azure Load Testing integrates seamlessly with other Azure services. For instance
 
 ## Run the test
 
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Create a Load test for the `Function` endpoint
 > - Limit the duration of the test to **3 minutes**
 
-</div>
-
-<div class="tip" data-title="Tips">
-
+> [!hint] **Tip**
+> 
 > Use the direct integration of [Azure Load Testing with Azure Functions][functionloadtesting]
 
-</div>
 
-<details>
+>[+] *Toggle Solution*
+>
+> 1. Locate the Function App in the Azure Portal
+> 1. Click on the **Load Testing (Preview)** blade
+> 1. Click on the **Create test** button
+> 1. Select the existing Azure Load Testing resource and provide a short name and description of the test
+> 1. Click on **Add request**
+> 1. Make sure the pre-populated request points to your Function endpoint and uses the right HTTP method (**POST**)
+> 1. Select the body tab, set the **Data type** value to **JSON view**, and paste the request body used in the file **test.http**
+> 1. Valide the request using the **Add** button
+> 1. Select the tab **Load configuration** and set **Test duration (minutes)** to 3
+> 1. Click on **Review + create** then on **Create**
+> 1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
 
-<summary>📚 Toggle solution</summary>
 
-1. Locate the Function App in the Azure Portal
-1. Click on the `Load Testing (Preview)` blade
-1. Click on the `Create test` button
-1. Select the existing Azure Load Testing resource and provide a short name and description of the test
-1. Click on `Add request`
-1. Make sure the pre-populated request points to your Function endpoint and uses the right HTTP method (`POST`)
-1. Select the body tab, set the `Data type` value to `JSON view`, and paste the request body used in the file `test.http`
-1. Valide the request using the `Add` button
-1. Select the tab `Load configuration` and set `Test duration (minutes)` to 3
-1. Click on `Review + create` then on `Create`
-1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
+As the test starts, you will see a **Load test results** dashboard with various metrics like the total number of requests, throughput, and error percentage.
 
-</details>
-
-As the test starts, you will see a `Load test results` dashboard with various metrics like the total number of requests, throughput, and error percentage.
-
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Find out the average response time ?
 
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Locate the `Aggregation` filter in the `Client-side metrics` panel
-1. Uncheck existing selection, select `Average`, then click on `Apply`
-1. Locate the metric below the graph in `Response time (successful responses)`. That is the average response time.
-
-</details>
+>[+] *Toggle Solution*
+>
+> 1. Locate the **Aggregation** filter in the **Client-side metrics** panel
+> 1. Uncheck existing selection, select **Average**, then click on **Apply**
+> 1. Locate the metric below the graph in **Response time (successful responses)**. That is the average response time.
 
 ## Check your stack using Application Map
 
@@ -414,196 +379,159 @@ Key features of Application Insights include:
 
 The Application Map is a feature within Application Insights that provides a visual overview of the components of your application and their interactions. It shows the flow of requests across these components and helps identify any failures or performance bottlenecks. This makes it easier to understand the architecture of your application and diagnose any issues.
 
-![Application map](./assets/lab3/application-map.png)
+!IMAGE[application-map.png](instructions281629/application-map.png)
 
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Find out how what components are used within your stack/workload
 > - Which component depends on the other ?
 > - Where is most of the time spent when making a request to your function ?
 
 </div>
 
-<div class="tip" data-title="Tips">
-
+> [!hint] **Tip**
+> 
 > Check the [Application Map overview][applicationmap]
 
-</div>
+>[+] *Toggle Solution*
+>
+> 1. Open the resource group on Azure portal
+> 1. Locate the Application Insights resource
+> 1. Click on the **Application Map** blade
+> 1. You should see the various component of the stack and their dependencies
+> 1. Check the average duration spent on each component and locate the one where most of the time is spent
 
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the resource group on Azure portal
-1. Locate the Application Insights resource
-1. Click on the `Application Map` blade
-1. You should see the various component of the stack and their dependencies
-1. Check the average duration spent on each component and locate the one where most of the time is spent
-
-</details>
-
----
+===
 
 # Lab 4 : Investigate errors
 
 As you add new features to your application, few regressions may appear, hence the need for testing and monitoring to detect and fix these regressions.
 
-To simulate making changes and deploying new releases, the provided Function App relies on the `RELEASE` environment variable to control its behavior and introduce regressions like throwing errors and injecting latency.
+To simulate making changes and deploying new releases, the provided Function App relies on the **RELEASE** environment variable to control its behavior and introduce regressions like throwing errors and injecting latency.
 
 ## Simulate a new release
 
-<div class="task" data-title="Task">
+> [!note] **Task**
+> 
+> - Update the config of the Function Apps by setting the environment variable **RELEASE** to **2**. The function should start throwing errors for 10% of the requests.
 
-> - Update the config of the Function Apps by setting the environment variable `RELEASE` to `2`. The function should start throwing errors for 10% of the requests.
-
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the resource group on Azure portal
-1. Locate the Function App
-1. Click on the `Environment variables` blade
-1. Click on the `RELEASE` environment variable to edit it
-1. Set the value to `2` and hit `Apply`
-1. Hit `Apply` to validate all changes on environment variables
-1. Select `Confirm`
+>[+] *Toggle Solution*
+>
+> 1. Open the resource group on Azure portal
+> 1. Locate the Function App
+> 1. Click on the **Environment variables** blade
+> 1. Click on the **RELEASE** environment variable to edit it
+> 1. Set the value to **2** and hit **Apply**
+> 1. Hit **Apply** to validate all changes on environment variables
+> 1. Select **Confirm**
 
 The Function App will reload and then it will adapt its behavior to throw errors at a 10% rate
 
-</details>
 
 ## Re-run load testing
 
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Re-run the load test which you have created in the previous lab and observe if there are any changes compared to before
 
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-You can either opt for creating a new test like you did in Lab 3 or re-rerun an existing test.
-
-Here is how you should proceed if you choose to rerun a test:
-
-1. Locate the Function App in the Azure Portal
-1. Click on the `Load Testing (Preview)` blade
-1. Select any test in `Test runs` section
-1. Click on the `Rerun` button on the top
-1. Optionally provide a short description (e.g. `Checking for errors`)
-1. Click on the `Rerun` button
-1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
-1. Click on the new test run to access test results
-
-</details>
+>[+] *Toggle Solution*
+>
+> You can either opt for creating a new test like you did in Lab 3 or re-rerun an existing test.
+> Here is how you should proceed if you choose to rerun a test:
+> 1. Locate the Function App in the Azure Portal
+> 1. Click on the **Load Testing (Preview)** blade
+> 1. Select any test in **Test runs** section
+> 1. Click on the **Rerun** button on the top
+> 1. Optionally provide a short description (e.g. **Checking for errors**)
+> 1. Click on the **Rerun** button
+> 1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
+> 1. Click on the new test run to access test results
 
 ## Inspect errors
 
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Use Application Insights to find more details about the error that you started observing.
 > - Which service and which line of code is throwing this error ?
 
-</div>
 
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the resource group on Azure portal
-1. Locate the Application Insights resource
-1. You should see a spike of errors on the `Failed requests` panel
-1. Use the `Failures` blade or click on the errors' chart
-1. Click on the top response code (`500`) on the right panel
-1. Select the suggested sample operation on the right panel
-1. You should see the details of the errors including any other service which was involved on the operation
-1. Click on `Traces and Events`
-1. Select the exception to access its call stack
-1. Check the `message` on the right panel and click on `[show more]` to get more details
-1. You should see a reference to `Random error`, the file `api.js` where the error was triggered, and the call trace including line numbers
+>[+] *Toggle Solution*
+>
+> 1. Open the resource group on Azure portal
+> 1. Locate the Application Insights resource
+> 1. You should see a spike of errors on the **Failed requests** panel
+> 1. Use the **Failures** blade or click on the errors' chart
+> 1. Click on the top response code (**500**) on the right panel
+> 1. Select the suggested sample operation on the right panel
+> 1. You should see the details of the errors including any other service which was involved on the operation
+> 1. Click on **Traces and Events**
+> 1. Select the exception to access its call stack
+> 1. Check the **message** on the right panel and click on **[show more]** to get more details
+> 1. You should see a reference to **Random error**, the file **api.js** where the error was triggered, and the call trace including line numbers
 
 </details>
 
----
+===
 
 # Lab 5 : Investigate latency issues
 
 The goal of this lab is to investigate potential latency issues.
-The release `3` introduces a latency of 2 seconds in the function, so you will start by simulating the deployment of that release.
-<div class="task" data-title="Task">
+The release **3** introduces a latency of 2 seconds in the function, so you will start by simulating the deployment of that release.
 
-> - Update the config of the Function Apps by setting the environment variable `RELEASE` to `3`. Request should now be 2 seconds slower compared to before.
+> [!note] **Task**
+> 
+> - Update the config of the Function Apps by setting the environment variable **RELEASE** to *3*. Request should now be 2 seconds slower compared to before.
 
-</div>
 
-<details>
+>[+] *Toggle Solution*
+>
+> 1. Open the resource group on Azure portal
+> 1. Locate the Function App
+> 1. Click on the **Environment variables** blade
+> 1. Click on the **RELEASE** environment variable to edit it
+> 1. Set the value to **3** and hit **Apply**
+> 1. Hit **Apply** to validate all changes on environment variables
+> 1. Select **Confirm**
+> 
+> The Function App will reload and then it will adapt its behavior to inject a latency of 2 seconds
 
-<summary>📚 Toggle solution</summary>
-
-1. Open the resource group on Azure portal
-1. Locate the Function App
-1. Click on the `Environment variables` blade
-1. Click on the `RELEASE` environment variable to edit it
-1. Set the value to `3` and hit `Apply`
-1. Hit `Apply` to validate all changes on environment variables
-1. Select `Confirm`
-
-The Function App will reload and then it will adapt its behavior to inject a latency of 2 seconds
-
-</details>
 
 ## Run load testing again
 
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Re-run the same load test which you have used in the previous lab and observe if there are any changes compared to before
 
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-You can either opt for creating a new test like you did in Lab 3 or re-rerun an existing test.
-
-Here is how you should proceed if you choose to rerun a test:
-
-1. Locate the Function App in the Azure Portal
-1. Click on the `Load Testing (Preview)` blade
-1. Select any test in `Test runs` section
-1. Click on the `Rerun` button on the top
-1. Optionally provide a short description (e.g. `Checking for latency issues`)
-1. Click on the `Rerun` button
-1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
-1. Click on the new test run to access test results
-
-</details>
+>[+] *Toggle Solution*
+>
+> You can either opt for creating a new test like you did in Lab 3 or re-rerun an existing test.
+> 
+> Here is how you should proceed if you choose to rerun a test:
+> 
+> 1. Locate the Function App in the Azure Portal
+> 1. Click on the **Load Testing (Preview)** blade
+> 1. Select any test in **Test runs** section
+> 1. Click on the **Rerun** button on the top
+> 1. Optionally provide a short description (e.g. **Checking for latency issues**)
+> 1. Click on the **Rerun** button
+> 1. The test will take few seconds to get created and then you should see a popup telling you that the test has started
+> 1. Click on the new test run to access test results
 
 ## Inspect performance issues
 
-<div class="task" data-title="Task">
-
+> [!note] **Task**
+> 
 > - Use Application Insights to find more details about the latency issue that you started observing.
 
-</div>
-
-<details>
-
-<summary>📚 Toggle solution</summary>
-
-1. Open the resource group on Azure portal
-1. Locate the Application Insights resource
-1. You should see an increase in response time on the `Server response time` panel
-1. Use the `Performance` blade or click on the response time chart
-1. You should see the duration taken by each operation
-1. The `qna` operation should be unnaturally slow (+2 seconds) and you should see a red arrow on the right of the operation together with the percentage of increase in latency. That is the endpoint to investigate.
-1. You can use the `Profiler` to get more details about the origin of the issue
-
-</details>
+>[+] *Toggle Solution*
+>
+> 1. Open the resource group on Azure portal
+> 1. Locate the Application Insights resource
+> 1. You should see an increase in response time on the **Server response time** panel
+> 1. Use the **Performance** blade or click on the response time chart
+> 1. You should see the duration taken by each operation
+> 1. The **qna** operation should be unnaturally slow (+2 seconds) and you should see a red arrow on the right of the operation together with the percentage of increase in latency. That is the endpoint to investigate.
+> 1. You can use the **Profiler** to get more details about the origin of the issue
 
 The Profiler in Application Insights is a powerful feature that allows developers to collect detailed performance data from a live web application. It's essentially a diagnostic tool that helps you understand the performance characteristics of your application and find the root cause of any performance issues.
 
