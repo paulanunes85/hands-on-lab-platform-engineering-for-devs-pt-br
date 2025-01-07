@@ -164,7 +164,7 @@ We will be using a Dev Box with a customized image intended for full stack devel
 
 <div class="task" data-title="Task">
 
-> - Clone the project [https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs](https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs)
+> - Clone the project [https://github.com/microsoft/hands-on-lab-platform-engineering-for-devs](https://github.com/microsoft/hands-on-lab-platform-engineering-for-devs)
 
 </div>
 
@@ -175,7 +175,7 @@ We will be using a Dev Box with a customized image intended for full stack devel
 Use the integrated terminal to run the following commands:
 
 ```sh
-git clone https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs.git
+git clone https://github.com/microsoft/hands-on-lab-platform-engineering-for-devs.git
 ```
 
 </details>
