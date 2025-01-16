@@ -1,24 +1,24 @@
-# Provisioning Environment
+# Provisionamento de Ambiente
 
-## Deploying the DevCenter resources
+## Implantando os recursos do DevCenter
 
-One script  ([deploy.sh](deploy.sh)) is available to deploy:
-- A devcenter with pools, definitions, catalog, projects, etc
+Um script ([deploy.sh](deploy.sh)) está disponível para implantar:
+- Um devcenter com pools, definições, catálogo, projetos, etc.
 
-## Create devbox on behalf of users
+## Criar devbox em nome dos usuários
 
-This project contains a shell script to provision Dev Boxes for a list of users.
+Este projeto contém um script shell para provisionar Dev Boxes para uma lista de usuários.
 
-### Files
+### Arquivos
 
-[provision_dev_boxes.sh](provision_dev_boxes.sh): This is the main script that creates Dev Boxes for each user in the users.csv file.
-users.csv: This file contains a list of email addresses of users for whom the Dev Boxes will be created.
+[provision_dev_boxes.sh](provision_dev_boxes.sh): Este é o script principal que cria Dev Boxes para cada usuário no arquivo users.csv.
+users.csv: Este arquivo contém uma lista de endereços de e-mail dos usuários para os quais as Dev Boxes serão criadas.
 
-### How to use
+### Como usar
 
-- Make sure you have Azure CLI installed and configured on your machine.
-- Update the users.csv file with the email addresses of the users for whom you want to create Dev Boxes as well as their passwords.
-- Run the provision_dev_boxes.sh script with the following command:
-The script will read the users.csv file, log in to the Azure portal for each user, generate a unique name for the Dev Box using uuidgen, and then create the Dev Box in the specified development center.
+- Certifique-se de que você tenha o Azure CLI instalado e configurado em sua máquina.
+- Atualize o arquivo users.csv com os endereços de e-mail dos usuários para os quais você deseja criar Dev Boxes, bem como suas senhas.
+- Execute o script provision_dev_boxes.sh com o seguinte comando:
+O script lerá o arquivo users.csv, fará login no portal do Azure para cada usuário, gerará um nome único para a Dev Box usando uuidgen e, em seguida, criará a Dev Box no centro de desenvolvimento especificado.
 
-> **Note**: The script does not block and does not check if the creation of the Dev Box was successful. It simply launches the creation command and moves on to the next user.
+> **Nota**: O script não bloqueia e não verifica se a criação da Dev Box foi bem-sucedida. Ele simplesmente lança o comando de criação e passa para o próximo usuário.
