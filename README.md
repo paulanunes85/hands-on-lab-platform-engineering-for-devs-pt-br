@@ -1,31 +1,32 @@
-# Platform engineering for devs Hands-on Lab
+<h1 align="center"> Engenharia de plataforma para devs Hands-on Lab</h1>
 
-This workshop will guide you on how to fast start your dev experience, how to deploy to Azure, and how to detect potential issues with your code during runtime.
+<h5 align="center">Revisão para Português Brasil @paulanunes85 - 2025</h5>
 
-## Provisioning
+Este workshop irá guiá-lo sobre como iniciar rapidamente sua experiência de desenvolvimento, como implantar no Azure e como detectar possíveis problemas com seu código durante a execução.
 
-Since DevBox can takes hours to deploy, it's interesting to prepare the environment before the students use the lab. You can have **one** subscription with **one** devcenter and **one** (or several) projects. Then, each student will use his own dev box. DevBox can be requested in advance.
+## Provisionamento
 
-Follow [the procedure](./provisioning/provisioning.md)
+Como o DevBox pode levar horas para ser implantado, é interessante preparar o ambiente antes que os alunos usem o laboratório. Você pode ter **uma** assinatura com **um** devcenter e **um** (ou vários) projetos. Então, cada aluno usará sua própria dev box. O DevBox pode ser solicitado com antecedência.
 
-## Contributing
+Siga [o procedimento](./provisioning/provisioning.md)
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+## Contribuindo
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+Este projeto aceita contribuições e sugestões. A maioria das contribuições exige que você concorde com um
+Contrato de Licença de Contribuidor (CLA) declarando que você tem o direito de, e realmente concede a nós,
+os direitos de usar sua contribuição. Para mais detalhes, visite https://cla.opensource.microsoft.com.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Quando você enviar um pull request, um bot CLA determinará automaticamente se você precisa fornecer
+um CLA e decorará o PR adequadamente (por exemplo, verificação de status, comentário). Simplesmente siga as instruções
+fornecidas pelo bot. Você só precisará fazer isso uma vez em todos os repositórios que usam nosso CLA.
 
-## Trademarks
+Este projeto adotou o [Código de Conduta de Código Aberto da Microsoft](https://opensource.microsoft.com/codeofconduct/).
+Para mais informações, veja as [Perguntas Frequentes sobre o Código de Conduta](https://opensource.microsoft.com/codeofconduct/faq/) ou
+entre em contato com [opencode@microsoft.com](mailto:opencode@microsoft.com) para quaisquer perguntas ou comentários adicionais.
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+## Marcas Registradas
+
+Este projeto pode conter marcas registradas ou logotipos de projetos, produtos ou serviços. O uso autorizado de marcas registradas ou logotipos da Microsoft está sujeito e deve seguir as 
+[Diretrizes de Marca e Marca Registrada da Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+O uso de marcas registradas ou logotipos da Microsoft em versões modificadas deste projeto não deve causar confusão ou implicar patrocínio da Microsoft.
+Qualquer uso de marcas registradas ou logotipos de terceiros está sujeito às políticas desses terceiros.
