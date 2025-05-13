@@ -2,6 +2,8 @@
 
 <h5 align="center">Revisão para Português Brasil @paulanunes85 - 2025</h5>
 
+<p align="center"><a href="README.es.md">🇪🇸 Versión en Español</a></p>
+
 Este workshop irá guiá-lo sobre como iniciar rapidamente sua experiência de desenvolvimento, como implantar no Azure e como detectar possíveis problemas com seu código durante a execução.
 
 ## Provisionamento
